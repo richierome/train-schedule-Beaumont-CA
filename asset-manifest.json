@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/train-schedule-Beaumont-CA/static/js/main.388ef7bf.js",
+    "index.html": "/train-schedule-Beaumont-CA/index.html",
+    "main.388ef7bf.js.map": "/train-schedule-Beaumont-CA/static/js/main.388ef7bf.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.388ef7bf.js"
+  ]
+}
