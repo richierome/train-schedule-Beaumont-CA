@@ -1,3 +1,20 @@
+--Core Packages--
+
+react
+
+react-dom
+
+react-scripts
+
+web-vitals
+
+---npm installs--
+npm install axios
+npm install express
+npm install dotenv
+npm install cors
+------------------
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
