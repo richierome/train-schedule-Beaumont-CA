@@ -6,8 +6,9 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [showMenu, setShowMenu] = useState(false); // Burger menu state
 
+  // dark mode
   const appStyle = {
-    backgroundColor: "#121212", // Always dark mode
+    backgroundColor: "#121212",
     color: "#ffffff",
     minHeight: "100vh",
     padding: "2rem",
@@ -19,11 +20,12 @@ function App() {
   // Fetch crossings from backend
   const fetchCrossings = async () => {
     try {
-      const res = await axios.get("http://localhost:5001/api/trains");
+     const res = await axios.get(process.env.REACT_APP_API_URL); // Change to live backend for GH Pages
       setCrossings(res.data);
       setLoading(false);
     } catch (error) {
       console.error("Error fetching crossings:", error);
+      setLoading(false);
     }
   };
 
@@ -35,16 +37,22 @@ function App() {
 
   if (loading) return <p>Loading...</p>;
 
+  // Only focus on California St and Pennsylvania Ave
   const streets = ["California St", "Pennsylvania Ave"];
   const crossingData = streets.map((street) => {
     const data = crossings.find((c) => c.crossing_name === street);
-    return data || { crossing_name: street, last_crossing_time: null, is_active: false, id: street };
+    return data || {
+      crossing_name: street,
+      last_crossing_time: null,
+      is_active: false,
+      id: street,
+    };
   });
 
   return (
     <div style={appStyle}>
       {/* Burger Menu */}
-      <div style={{ position: "fixed", top: "1rem", right: "1rem" }}>
+      <div style={{ position: "fixed", top: "1rem", right: "1rem", zIndex: 200 }}>
         <button
           onClick={toggleMenu}
           style={{
@@ -74,7 +82,6 @@ function App() {
               borderRadius: "5px",
               minWidth: "200px",
               boxShadow: "0 0 10px rgba(0,0,0,0.5)",
-              zIndex: 100,
             }}
           >
             <span
@@ -127,7 +134,7 @@ function App() {
         ))}
       </div>
 
-      {/* CSS for pulsing */}
+      {/* CSS for pulsing active trains */}
       <style>
         {`
           @keyframes pulse {
