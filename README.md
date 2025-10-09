@@ -9,9 +9,13 @@ react-scripts
 web-vitals
 
 ---npm installs--
+
 npm install axios
+
 npm install express
+
 npm install dotenv
+
 npm install cors
 ------------------
 
